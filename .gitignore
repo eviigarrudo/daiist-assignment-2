@@ -14,3 +14,6 @@ runs/
 
 # Never commit your API key
 .env
+
+# COCO checkpoint Ultralytics downloads at train time
+/yolo*.pt

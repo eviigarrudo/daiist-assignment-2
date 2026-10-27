@@ -1,0 +1,249 @@
+{
+  "dataset": {
+    "workspace": "joseph-nelson",
+    "project": "hard-hat-workers",
+    "version": 5
+  },
+  "training": {
+    "base_model": "yolo11n.pt",
+    "epochs": 6,
+    "imgsz": 416,
+    "batch": 8,
+    "device": "mps",
+    "seed": 0,
+    "best_epoch_weights": "weights/hardhat_yolo11n.pt"
+  },
+  "positive_class": "head",
+  "costs": {
+    "miss": 120.0,
+    "dispatch": 8.0,
+    "review": 0.17,
+    "reviewer_recall": 0.95,
+    "reviewer_false_alarm": 0.02,
+    "base_rate": 0.05
+  },
+  "chosen_threshold": 0.19,
+  "chosen_band": {
+    "t_low": 0.01,
+    "t_high": 0.76,
+    "cost_per_frame": 0.9289979472774419,
+    "review_share": 0.1373055315471046
+  },
+  "max_review_share": 0.15,
+  "unconstrained_band": {
+    "t_low": 0.0,
+    "t_high": 0.76,
+    "cost_per_frame": 0.8666337780898877,
+    "review_share": 0.9574141097666378
+  },
+  "test_at_unconstrained_band": {
+    "cost_per_1000": 851.5446996466432,
+    "review_share": 0.958286219081272
+  },
+  "test_at_band": {
+    "cost_per_1000": 998.5800227158002,
+    "review_share": 0.135276375567895,
+    "confusion": [
+      [
+        488,
+        74,
+        4
+      ],
+      [
+        11,
+        31,
+        98
+      ]
+    ]
+  },
+  "test_confusion_at_t": [
+    [
+      553,
+      0,
+      13
+    ],
+    [
+      16,
+      0,
+      124
+    ]
+  ],
+  "per_class_at_t": {
+    "head": {
+      "precision": 0.8508217446270544,
+      "recall": 0.9269972451790633,
+      "TP": 673,
+      "FP": 118,
+      "FN": 53
+    },
+    "helmet": {
+      "precision": 0.8218181818181818,
+      "recall": 0.9441253263707572,
+      "TP": 1808,
+      "FP": 392,
+      "FN": 107
+    }
+  },
+  "ultralytics_test": {
+    "mAP50": 0.9503076451268411,
+    "mAP50-95": 0.635560688401641,
+    "per_class": {
+      "head": {
+        "precision": 0.9248159673595231,
+        "recall": 0.8787878787878788,
+        "AP50": 0.940382208339938,
+        "AP50-95": 0.6282971181881832
+      },
+      "helmet": {
+        "precision": 0.9250238572341779,
+        "recall": 0.9023498694516972,
+        "AP50": 0.9602330819137442,
+        "AP50-95": 0.642824258615099
+      }
+    }
+  },
+  "models": {
+    "finetuned": {
+      "detection": {
+        "head": {
+          "AP50": 0.9259002816790245,
+          "AP50-95": 0.621222610680698,
+          "instances": 726
+        },
+        "helmet": {
+          "AP50": 0.9606618314294418,
+          "AP50-95": 0.642554411491104,
+          "instances": 1915
+        },
+        "all": {
+          "mAP50": 0.9432810565542331,
+          "mAP50-95": 0.6318885110859009
+        }
+      },
+      "frame_auc": 0.9507761231701161,
+      "frame_accuracy_at_t": 0.9589235127478754,
+      "cost_per_1000_at_t": 1214.5583038869256,
+      "recall_at_t": 0.8857142857142857,
+      "false_alarm_rate_at_t": 0.022968197879858657
+    },
+    "coco_zero_shot": {
+      "detection": {
+        "head": {
+          "AP50": 0.00533064699529685,
+          "AP50-95": 0.0015534992303012684,
+          "instances": 726
+        },
+        "helmet": {
+          "AP50": 0.0,
+          "AP50-95": 0.0,
+          "instances": 1915
+        },
+        "all": {
+          "mAP50": 0.002665323497648425,
+          "mAP50-95": 0.0007767496151506342
+        }
+      },
+      "frame_auc": 0.6074394245330641,
+      "frame_accuracy_at_t": 0.22237960339943344,
+      "cost_per_1000_at_t": 7771.731448763251,
+      "recall_at_t": 1.0,
+      "false_alarm_rate_at_t": 0.9699646643109541
+    },
+    "predict_nothing": {
+      "detection": {
+        "head": {
+          "AP50": 0.0,
+          "AP50-95": 0.0,
+          "instances": 726
+        },
+        "helmet": {
+          "AP50": 0.0,
+          "AP50-95": 0.0,
+          "instances": 1915
+        },
+        "all": {
+          "mAP50": 0.0,
+          "mAP50-95": 0.0
+        }
+      },
+      "frame_auc": 0.5,
+      "frame_accuracy_at_t": 0.8016997167138811,
+      "cost_per_1000_at_t": 6000.0,
+      "recall_at_t": 0.0,
+      "false_alarm_rate_at_t": 0.0
+    }
+  },
+  "reference_policies_per_1000": {
+    "do_nothing": 6000.0,
+    "person_checks_everything": 1002.0000000000002,
+    "dispatch_to_every_frame": 8000.0
+  },
+  "sensitivity": [
+    {
+      "vary": "miss",
+      "value": 10,
+      "best_threshold": 0.81,
+      "cost_per_1000": 472.36859874675883
+    },
+    {
+      "vary": "miss",
+      "value": 25,
+      "best_threshold": 0.53,
+      "cost_per_1000": 674.1476812337943
+    },
+    {
+      "vary": "miss",
+      "value": 50,
+      "best_threshold": 0.24,
+      "cost_per_1000": 866.1611387208297
+    },
+    {
+      "vary": "miss",
+      "value": 120,
+      "best_threshold": 0.19,
+      "cost_per_1000": 1235.8983362143474
+    },
+    {
+      "vary": "miss",
+      "value": 250,
+      "best_threshold": 0.16,
+      "cost_per_1000": 1849.6731849611062
+    },
+    {
+      "vary": "miss",
+      "value": 500,
+      "best_threshold": 0.06,
+      "cost_per_1000": 2910.622164001729
+    },
+    {
+      "vary": "base_rate",
+      "value": 0.01,
+      "best_threshold": 0.53,
+      "cost_per_1000": 405.03079083837514
+    },
+    {
+      "vary": "base_rate",
+      "value": 0.02,
+      "best_threshold": 0.24,
+      "cost_per_1000": 648.9412273120139
+    },
+    {
+      "vary": "base_rate",
+      "value": 0.05,
+      "best_threshold": 0.19,
+      "cost_per_1000": 1235.8983362143474
+    },
+    {
+      "vary": "base_rate",
+      "value": 0.1,
+      "best_threshold": 0.16,
+      "cost_per_1000": 2148.703543647364
+    },
+    {
+      "vary": "base_rate",
+      "value": 0.2,
+      "best_threshold": 0.02,
+      "cost_per_1000": 3844.3171996542787
+    }
+  ]
+}
